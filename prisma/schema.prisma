@@ -7,52 +7,45 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// commment 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique 
-  name String @map("firstName")
-  role Role? @default(USER)
- 
-  profile Profile? 
- posts   Post[] 
-  
-  @@map("users")
-   
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  name  String @map("firstName")
+  role  Role?  @default(USER)
+
+  profile Profile?
+  posts   Post[]
 
   @@unique([name, role])
-  @@index([id,email])
-} 
+  @@index([id, email])
+  @@map("users")
+}
 
 model Profile {
-  id Int @id @default(autoincrement())
-  bio String
-  userId Int @unique
-  user User @relation(fields: [userId], references: [id])
+  id     Int    @id @default(autoincrement())
+  bio    String
+  userId Int    @unique
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Post {
-  id         Int        @id @default(autoincrement())
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
-  title      String
-  likeNum  Int  @default(0) 
-  published  Boolean    @default(false)
-  author     User?       @relation(fields: [authorId], references: [id] , onDelete:Cascade )
-  authorId   Int?  
-  catgories Category[] 
-  
-
+  id        Int        @id @default(autoincrement())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  title     String
+  likeNum   Int        @default(0)
+  published Boolean    @default(false)
+  author    User?      @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId  Int?
+  catgories Category[]
 }
 
-model Category{
-  id Int @id @default(autoincrement())
-  name String
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
   posts Post[]
 }
-
-
-
-
 
 // model User{
 //   firstName String
@@ -70,11 +63,7 @@ model Category{
 //   @@unique([userFirstName,userLastName])
 // }
 
-
-
-
 enum Role {
-  USER 
-  ADMIN 
-  
+  USER
+  ADMIN
 }
