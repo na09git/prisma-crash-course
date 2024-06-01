@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
-    "@prisma/client": "^4.14.1",
+    "@prisma/client": "^4.16.2",
     "@types/node": "20.1.2",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
@@ -22,11 +22,11 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",
-    "ts-node": "^10.9.1",
-    "typescript": "5.0.4"
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
-    "prisma": "^4.14.1"
+    "prisma": "^4.16.2",
+    "typescript": "5.4.5"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
